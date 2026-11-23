@@ -29,10 +29,10 @@ public static class RhythmLaneInfo
             case RhythmLane.AttackLeft: return "A";
             case RhythmLane.AttackDown: return "S";
             case RhythmLane.AttackRight: return "D";
-            case RhythmLane.DefenseUp: return "^";
-            case RhythmLane.DefenseLeft: return "<";
-            case RhythmLane.DefenseDown: return "v";
-            case RhythmLane.DefenseRight: return ">";
+            case RhythmLane.DefenseUp: return "\u2191";
+            case RhythmLane.DefenseLeft: return "\u2190";
+            case RhythmLane.DefenseDown: return "\u2193";
+            case RhythmLane.DefenseRight: return "\u2192";
             default: return "?";
         }
     }

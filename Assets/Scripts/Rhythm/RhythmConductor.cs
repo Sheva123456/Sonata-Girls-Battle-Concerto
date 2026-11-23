@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [Serializable]
 public class LaneTrack
 {
-    public RhythmLane lane;
+    public bool attack;
     public RectTransform noteParent;
     public Image receptorImage;
     public float receptorX = 108f;
@@ -202,9 +202,10 @@ public class RhythmConductor : MonoBehaviour
         if (tracks == null)
             return null;
 
+        bool attack = RhythmLaneInfo.IsAttack(lane);
         foreach (var track in tracks)
         {
-            if (track.lane == lane)
+            if (track.attack == attack)
                 return track;
         }
 

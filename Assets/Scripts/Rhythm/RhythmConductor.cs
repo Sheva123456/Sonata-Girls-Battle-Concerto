@@ -24,6 +24,7 @@ public class RhythmConductor : MonoBehaviour
     [SerializeField] LaneTrack[] tracks;
     [SerializeField] Text judgeText;
     [SerializeField] Text timeText;
+    [SerializeField] CharacterPose leftCharacter;
     [SerializeField] float approachSeconds = 1.2f;
     [SerializeField] float hitWindowSeconds = 0.1f;
 
@@ -114,6 +115,8 @@ public class RhythmConductor : MonoBehaviour
                 if (note.view != null)
                     note.view.MarkMiss();
                 SetJudge("Miss", new Color(1f, 0.4f, 0.34f));
+                if (leftCharacter != null)
+                    leftCharacter.ShowIdle();
             }
 
             if (note.view == null)
@@ -169,6 +172,13 @@ public class RhythmConductor : MonoBehaviour
         best.view = null;
         Flash(FindTrack(lane));
         SetJudge("Hit", new Color(0.55f, 1f, 0.62f));
+        if (leftCharacter != null)
+        {
+            if (RhythmLaneInfo.IsAttack(lane))
+                leftCharacter.ShowAttack();
+            else
+                leftCharacter.ShowDefense();
+        }
     }
 
     void Flash(LaneTrack track)

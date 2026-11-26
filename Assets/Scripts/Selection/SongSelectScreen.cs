@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
 public class SongEntry
@@ -12,6 +13,8 @@ public class SongSelectScreen : MonoBehaviour
 {
     [SerializeField] SongEntry[] songs;
     [SerializeField] SongSelectSlot[] slots;
+    [SerializeField] Image leftPortrait;
+    [SerializeField] Text leftName;
 
     void Start()
     {
@@ -28,6 +31,25 @@ public class SongSelectScreen : MonoBehaviour
 
         if (songs != null && songs.Length > 0)
             Select(0);
+
+        ApplyPickedCharacter();
+    }
+
+    void ApplyPickedCharacter()
+    {
+        MatchSetup match = MatchSetup.Current;
+        if (!match.hasCharacter)
+            return;
+
+        if (leftPortrait != null && match.leftIdle != null)
+            leftPortrait.sprite = match.leftIdle;
+
+        if (leftName != null)
+        {
+            leftName.text = string.IsNullOrEmpty(match.displayName)
+                ? "PLACEHOLDER 1"
+                : match.displayName.ToUpperInvariant();
+        }
     }
 
     public void Select(int index)

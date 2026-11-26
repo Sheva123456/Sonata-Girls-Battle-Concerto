@@ -353,6 +353,8 @@ MonoBehaviour:
   slots:
   - {fileID: 620504}
   - {fileID: 620604}
+  leftPortrait: {fileID: 620203}
+  leftName: {fileID: 620223}
 --- !u!1 &620101
 GameObject:
   m_ObjectHideFlags: 0

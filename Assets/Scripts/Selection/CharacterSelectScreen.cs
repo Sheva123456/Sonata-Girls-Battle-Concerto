@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [Serializable]
@@ -7,6 +8,7 @@ public class RosterEntry
 {
     public string displayName;
     public Sprite idle;
+    public Sprite rightIdle;
 }
 
 public class CharacterSelectScreen : MonoBehaviour
@@ -15,6 +17,8 @@ public class CharacterSelectScreen : MonoBehaviour
     [SerializeField] CharacterSelectSlot[] slots;
     [SerializeField] Image preview;
     [SerializeField] Text nameLabel;
+
+    int selectedIndex;
 
     void Start()
     {
@@ -40,10 +44,22 @@ public class CharacterSelectScreen : MonoBehaviour
         if (nameLabel != null)
             nameLabel.text = roster[index].displayName;
 
+        selectedIndex = index;
+
         if (slots == null)
             return;
 
         for (int i = 0; i < slots.Length; i++)
             slots[i].SetSelected(i == index);
+    }
+
+    public void Next()
+    {
+        if (roster == null || selectedIndex < 0 || selectedIndex >= roster.Length)
+            return;
+
+        RosterEntry entry = roster[selectedIndex];
+        MatchSetup.Current.SetCharacter(entry.displayName, entry.idle, entry.rightIdle);
+        SceneManager.LoadScene("SongSelectionScene");
     }
 }

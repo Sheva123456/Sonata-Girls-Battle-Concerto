@@ -3,6 +3,7 @@ public class BattleResults
     public static readonly BattleResults Current = new BattleResults();
 
     public string winnerName = "PLAYER 1";
+    public string songName = "";
     public int perfect;
     public int great;
     public int good;
@@ -14,6 +15,7 @@ public class BattleResults
     public void Clear()
     {
         winnerName = "PLAYER 1";
+        songName = "";
         perfect = 0;
         great = 0;
         good = 0;

@@ -8,6 +8,9 @@ public class MatchSetup
     public Sprite leftIdle;
     public Sprite rightIdle;
     public bool hasCharacter;
+    public SongChart chart;
+    public string songName;
+    public bool hasSong;
 
     public void SetCharacter(string name, Sprite left, Sprite right)
     {
@@ -15,5 +18,12 @@ public class MatchSetup
         leftIdle = left;
         rightIdle = right;
         hasCharacter = left != null || right != null;
+    }
+
+    public void SetSong(string name, SongChart songChart)
+    {
+        songName = string.IsNullOrEmpty(name) ? "Song" : name;
+        chart = songChart;
+        hasSong = songChart != null;
     }
 }

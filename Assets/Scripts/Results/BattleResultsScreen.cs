@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class BattleResultsScreen : MonoBehaviour
 {
     [SerializeField] Text winnerLabel;
+    [SerializeField] Text songLabel;
     [SerializeField] Text perfectLabel;
     [SerializeField] Text greatLabel;
     [SerializeField] Text goodLabel;
@@ -16,6 +17,7 @@ public class BattleResultsScreen : MonoBehaviour
     {
         BattleResults results = BattleResults.Current;
         Set(winnerLabel, string.IsNullOrEmpty(results.winnerName) ? "PLAYER 1" : results.winnerName);
+        Set(songLabel, string.IsNullOrEmpty(results.songName) ? "SONG" : results.songName.ToUpperInvariant());
         Set(perfectLabel, results.perfect.ToString());
         Set(greatLabel, results.great.ToString());
         Set(goodLabel, results.good.ToString());

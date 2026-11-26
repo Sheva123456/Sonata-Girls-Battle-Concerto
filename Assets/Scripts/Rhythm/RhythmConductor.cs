@@ -55,6 +55,9 @@ public class RhythmConductor : MonoBehaviour
 
     void Start()
     {
+        if (MatchSetup.Current.hasSong && MatchSetup.Current.chart != null)
+            chart = MatchSetup.Current.chart;
+
         if (chart == null || clock == null || notePrefab == null)
         {
             Debug.LogError("RhythmConductor needs a chart, a clock, and a note prefab.");
@@ -255,6 +258,9 @@ public class RhythmConductor : MonoBehaviour
         BattleResults results = BattleResults.Current;
         results.Clear();
         results.winnerName = "PLAYER 1";
+        results.songName = MatchSetup.Current.hasSong
+            ? MatchSetup.Current.songName
+            : chart != null ? chart.name : "";
         results.perfect = perfect;
         results.great = great;
         results.good = good;

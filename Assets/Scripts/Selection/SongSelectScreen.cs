@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [Serializable]
@@ -15,6 +16,8 @@ public class SongSelectScreen : MonoBehaviour
     [SerializeField] SongSelectSlot[] slots;
     [SerializeField] Image leftPortrait;
     [SerializeField] Text leftName;
+
+    int selectedIndex;
 
     void Start()
     {
@@ -57,7 +60,22 @@ public class SongSelectScreen : MonoBehaviour
         if (songs == null || index < 0 || index >= songs.Length || slots == null)
             return;
 
+        selectedIndex = index;
+
         for (int i = 0; i < slots.Length; i++)
             slots[i].SetSelected(i == index);
+    }
+
+    public void StartBattle()
+    {
+        if (songs == null || selectedIndex < 0 || selectedIndex >= songs.Length)
+            return;
+
+        SongEntry entry = songs[selectedIndex];
+        if (entry == null || entry.chart == null)
+            return;
+
+        MatchSetup.Current.SetSong(entry.displayName, entry.chart);
+        SceneManager.LoadScene("RhythmBattleScene");
     }
 }

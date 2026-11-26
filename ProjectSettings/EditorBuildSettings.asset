@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenuScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/RhythmBattleScene.unity
+    guid: 79d378440ca79cc47b3407dbcf0648d8
+  - enabled: 1
+    path: Assets/Scenes/BattleResultsScene.unity
+    guid: 377bd09a79a4c394899c0deb7ae5c1d8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
